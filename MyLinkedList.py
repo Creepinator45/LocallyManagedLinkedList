@@ -4,7 +4,7 @@ import os
 class LinkedList:
 
     class Node:
-        def __init__(self, parent, data):
+        def __init__(self, parent, data) -> None:
             self.__data: Any = data
             self.__parent: LinkedList = parent
             self.__next: Optional[LinkedList.Node] = None
@@ -15,22 +15,22 @@ class LinkedList:
             return self.__data
         
         @data.setter
-        def data(self, data):
+        def data(self, data) -> None:
             self.__data = data
         
         @property
-        def next(self):
+        def next(self) -> Optional["LinkedList.Node"]:
             return self.__next
         
         @property
-        def previous(self):
+        def previous(self) -> Optional["LinkedList.Node"]:
             return self.__previous
         
         @property
-        def parent(self):
+        def parent(self) -> "LinkedList.Node":
             return self.__parent
         
-        def add_after(self, data):
+        def add_after(self, data) -> None:
             """
             add a new node after this node
             """
@@ -45,7 +45,7 @@ class LinkedList:
             self.__next = new_node
             self.parent._LinkedList__count += 1
         
-        def add_before(self, data):
+        def add_before(self, data) -> None:
             """
             add a new node before this node
             """
@@ -60,7 +60,7 @@ class LinkedList:
             self.__previous = new_node
             self.parent._LinkedList__count += 1
         
-        def remove(self):
+        def remove(self) -> None:
             """
             remove this node from the chain
             node will continue existing temporarily, but will no longer be referenced by adjacent nodes
@@ -89,7 +89,7 @@ class LinkedList:
         self.__count = 0
     
     @staticmethod
-    def from_sequence(sequence: Sequence):
+    def from_sequence(sequence: Sequence) -> "LinkedList":
         outputList = LinkedList()
         for item in sequence:
             outputList.append(item)
